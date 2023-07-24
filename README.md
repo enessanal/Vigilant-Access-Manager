@@ -1,5 +1,5 @@
-# Vigilant Access Manager
-## (Development Stage)
+# Vigilant Access Manager (Development Stage)
+
 
 Welcome to the Vigilant Access Manager (VAM) repository. We're in the early stages of developing a comprehensive access management system designed to provide secure and efficient remote and local asset management. As we continue to build, here are some of the key features we're working on:
 
