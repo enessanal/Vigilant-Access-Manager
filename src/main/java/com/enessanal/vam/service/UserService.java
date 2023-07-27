@@ -26,10 +26,12 @@ import java.util.Optional;
 public class UserService
 {
     private final UserRepository userRepository;
+    private final AssetRepository assetRepository;
+    private final AssetService assetService;
 
-    public List<User> getAllUsers(Optional<Integer> page, Optional<Integer> size, Optional<String> sortBy, Optional<String> direction)
+    public List<User> getUsers(Optional<Integer> page, Optional<Integer> size, Optional<String> sortBy, Optional<String> direction)
     {
-        int pageNumber = (page.orElse(1) - 1)>=0?(page.orElse(1) - 1):0;
+        int pageNumber = Math.max((page.orElse(1) - 1), 0);
         int pageSize = size.orElse(Integer.MAX_VALUE);
         String sortByParam = sortBy.orElse("createdTime");
         Sort.Direction directionParam = direction.isPresent() && direction.get().equalsIgnoreCase("desc") ? Sort.Direction.DESC : Sort.Direction.ASC;
@@ -84,7 +86,6 @@ public class UserService
         userRepository.deleteByEmail(email);
     }
 
-
     public User addUser(UserAddDto userAddDto)
     {
         Timestamp createdTime = new Timestamp(System.currentTimeMillis());
@@ -116,14 +117,21 @@ public class UserService
         return user;
     }
 
+    public Asset addAsset(String userId, Asset asset)
+    {
+        User user = userRepository.findById(userId).orElseThrow( () -> new UserNotFoundException("Invalid user id"));
 
+        asset.setUser(user);
+        return assetRepository.save(asset);
+    }
 
-//    public List<Asset> getAssets(String userID)
-//    {
-//        User user = userRepository.findById(id).orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-//
+    public List<Asset> getAssets(String userID,Optional<Integer> page, Optional<Integer> size, Optional<String> sortBy, Optional<String> direction)
+    {
+        User user = userRepository.findById(userID).orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+
 //        return user.getAssets();
-//    }
+        return assetService.getByUserId(userID, page, size, sortBy, direction);
+    }
 
 
 
@@ -132,15 +140,6 @@ public class UserService
 
 
 
-//
-//    public User addUserAsset(User user, Asset asset)
-//    {
-//        asset.setUser(user);
-//        assetRepository.save(asset);
-//        return userRepository.findById(user.getId())
-//                .orElseThrow(() -> new RuntimeException("User not found with id " + user.getId()));
-//
-//    }
 
 
 

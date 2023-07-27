@@ -1,6 +1,7 @@
 package com.enessanal.vam.controller;
 
 import com.enessanal.vam.model.Asset;
+import com.enessanal.vam.model.User;
 import com.enessanal.vam.service.AssetService;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -9,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/vam/assets")
@@ -19,8 +21,8 @@ public class AssetController
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<Asset> getAssets()
+    public List<Asset> getAssets(Optional<Integer> page, Optional<Integer> size, Optional<String> sortBy, Optional<String> direction)
     {
-        return assetService.getAssets();
+        return assetService.getAssets(page, size, sortBy, direction);
     }
 }

@@ -24,7 +24,6 @@ public class Asset
     @Getter @Setter
     private String host;
 
-
     @Getter @Setter
     private int port;
 

@@ -1,6 +1,7 @@
 package com.enessanal.vam.controller;
 
 import com.enessanal.vam.dto.UserAddDto;
+import com.enessanal.vam.model.Asset;
 import com.enessanal.vam.model.User;
 import com.enessanal.vam.service.UserService;
 import jakarta.validation.Valid;
@@ -19,9 +20,9 @@ public class UserController
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<User> getAllUsers(Optional<Integer> page, Optional<Integer> size, Optional<String> sortBy, Optional<String> direction)
+    public List<User> getUsers(Optional<Integer> page, Optional<Integer> size, Optional<String> sortBy, Optional<String> direction)
     {
-        return userService.getAllUsers(page, size, sortBy, direction);
+        return userService.getUsers(page, size, sortBy, direction);
     }
 
     @GetMapping("/count")
@@ -80,17 +81,19 @@ public class UserController
         userService.deleteByEmail(email);
     }
 
+    @PostMapping("/{id}/assets")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Asset addAssetToUser(@PathVariable(required = true) String id, @Valid @RequestBody Asset asset)
+    {
+        return userService.addAsset(id, asset);
+    }
 
-
-
-
-
-//    @GetMapping("/{id}/assets")
-//    @ResponseStatus(HttpStatus.OK)
-//    public List<Asset> getUserAssets(@PathVariable String id)
-//    {
-//        return userService.getAssets(id);
-//    }
+    @GetMapping("/{id}/assets")
+    @ResponseStatus(HttpStatus.OK)
+    public List<Asset> getUserAssets(@PathVariable(required = true) String id,Optional<Integer> page, Optional<Integer> size, Optional<String> sortBy, Optional<String> direction)
+    {
+        return userService.getAssets(id,page,size,sortBy,direction);
+    }
 
 
 
