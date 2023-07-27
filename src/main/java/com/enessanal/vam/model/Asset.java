@@ -1,13 +1,10 @@
 package com.enessanal.vam.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import java.sql.Timestamp;
-import java.util.UUID;
 
 @Entity
 @RequiredArgsConstructor
@@ -46,8 +43,10 @@ public class Asset
 
 
     @Getter @Setter
-    @ManyToOne
     @ToString.Exclude
+    @ManyToOne
+    @JoinColumn(name="user_id")
+    @JsonBackReference
     private User user;
 
 
