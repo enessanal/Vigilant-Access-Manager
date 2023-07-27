@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
@@ -18,9 +19,9 @@ public class UserController
 
     @GetMapping
     @ResponseStatus(HttpStatus.OK)
-    public List<User> getAllUsers()
+    public List<User> getAllUsers(Optional<Integer> page, Optional<Integer> size, Optional<String> sortBy, Optional<String> direction)
     {
-        return userService.getAllUsers();
+        return userService.getAllUsers(page, size, sortBy, direction);
     }
 
     @GetMapping("/count")

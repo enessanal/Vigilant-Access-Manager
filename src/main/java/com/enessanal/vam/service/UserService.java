@@ -8,6 +8,9 @@ import com.enessanal.vam.model.User;
 import com.enessanal.vam.repository.AssetRepository;
 import com.enessanal.vam.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +18,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.sql.Timestamp;
+import java.util.Optional;
 
 
 @Service
@@ -22,11 +26,15 @@ import java.sql.Timestamp;
 public class UserService
 {
     private final UserRepository userRepository;
-    private final AssetRepository assetRepository;
 
-    public List<User> getAllUsers()
+    public List<User> getAllUsers(Optional<Integer> page, Optional<Integer> size, Optional<String> sortBy, Optional<String> direction)
     {
-        return userRepository.findAll();
+        int pageNumber = (page.orElse(1) - 1)>=0?(page.orElse(1) - 1):0;
+        int pageSize = size.orElse(Integer.MAX_VALUE);
+        String sortByParam = sortBy.orElse("createdTime");
+        Sort.Direction directionParam = direction.isPresent() && direction.get().equalsIgnoreCase("desc") ? Sort.Direction.DESC : Sort.Direction.ASC;
+        Page<User> userPage = userRepository.findAll(PageRequest.of(pageNumber, pageSize, Sort.by(directionParam, sortByParam)));
+        return userPage.getContent();
     }
 
     public Long countUsers()
