@@ -11,10 +11,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
-import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.sql.Timestamp;
@@ -127,9 +125,6 @@ public class UserService
 
     public List<Asset> getAssets(String userID,Optional<Integer> page, Optional<Integer> size, Optional<String> sortBy, Optional<String> direction)
     {
-        User user = userRepository.findById(userID).orElseThrow( () -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-
-//        return user.getAssets();
         return assetService.getByUserId(userID, page, size, sortBy, direction);
     }
 

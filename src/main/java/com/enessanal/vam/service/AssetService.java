@@ -1,7 +1,6 @@
 package com.enessanal.vam.service;
 
 import com.enessanal.vam.model.Asset;
-import com.enessanal.vam.model.User;
 import com.enessanal.vam.repository.AssetRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

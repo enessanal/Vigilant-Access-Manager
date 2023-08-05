@@ -1,15 +1,8 @@
 package com.enessanal.vam.dto;
 
-import com.enessanal.vam.model.User;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
-import lombok.NonNull;
 import lombok.Setter;
-import lombok.ToString;
-
-import java.sql.Timestamp;
 
 @Getter @Setter
 public class AssetAddDto
