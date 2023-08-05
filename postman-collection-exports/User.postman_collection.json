@@ -1,0 +1,351 @@
+{
+	"info": {
+		"name": "User",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Count All Users",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SCHEME}}://{{HOST}}:{{PORT}}/{{API_BASE}}/{{USER_PATH}}/count",
+					"protocol": "{{SCHEME}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"{{API_BASE}}",
+						"{{USER_PATH}}",
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User List",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SCHEME}}://{{HOST}}:{{PORT}}/{{API_BASE}}/{{USER_PATH}}",
+					"protocol": "{{SCHEME}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"{{API_BASE}}",
+						"{{USER_PATH}}"
+					],
+					"query": [
+						{
+							"key": "sortBy",
+							"value": "email",
+							"disabled": true
+						},
+						{
+							"key": "direction",
+							"value": "desc",
+							"disabled": true
+						},
+						{
+							"key": "size",
+							"value": "4",
+							"disabled": true
+						},
+						{
+							"key": "page",
+							"value": "2",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a User By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SCHEME}}://{{HOST}}:{{PORT}}/{{API_BASE}}/{{USER_PATH}}/id/:id",
+					"protocol": "{{SCHEME}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"{{API_BASE}}",
+						"{{USER_PATH}}",
+						"id",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "6ebed1f4-fc8c-4b57-8bc5-6597777bae5e"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a User By Username",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SCHEME}}://{{HOST}}:{{PORT}}/{{API_BASE}}/{{USER_PATH}}/username/:username",
+					"protocol": "{{SCHEME}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"{{API_BASE}}",
+						"{{USER_PATH}}",
+						"username",
+						":username"
+					],
+					"variable": [
+						{
+							"key": "username",
+							"value": "rylee.nolan"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a User By Email",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SCHEME}}://{{HOST}}:{{PORT}}/{{API_BASE}}/{{USER_PATH}}/email/:email",
+					"protocol": "{{SCHEME}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"{{API_BASE}}",
+						"{{USER_PATH}}",
+						"email",
+						":email"
+					],
+					"variable": [
+						{
+							"key": "email",
+							"value": "kaycee.bernier@example.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User By ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{SCHEME}}://{{HOST}}:{{PORT}}/{{API_BASE}}/{{USER_PATH}}/id/:id",
+					"protocol": "{{SCHEME}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"{{API_BASE}}",
+						"{{USER_PATH}}",
+						"id",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "bc43392c-eee9-4d30-95cf-7e6fc6eb08c3"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User By Username",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{SCHEME}}://{{HOST}}:{{PORT}}/{{API_BASE}}/{{USER_PATH}}/username/:username",
+					"protocol": "{{SCHEME}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"{{API_BASE}}",
+						"{{USER_PATH}}",
+						"username",
+						":username"
+					],
+					"variable": [
+						{
+							"key": "username",
+							"value": "kurtis.damore"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User By Email",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{SCHEME}}://{{HOST}}:{{PORT}}/{{API_BASE}}/{{USER_PATH}}/email/:email",
+					"protocol": "{{SCHEME}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"{{API_BASE}}",
+						"{{USER_PATH}}",
+						"email",
+						":email"
+					],
+					"variable": [
+						{
+							"key": "email",
+							"value": "kaycee.bernier@example.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add a New User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"{{$randomUserName}}\",\r\n    \"email\":\"{{$randomEmail}}\",\r\n    \"password\":\"{{$randomPassword}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SCHEME}}://{{HOST}}:{{PORT}}/{{API_BASE}}/{{USER_PATH}}",
+					"protocol": "{{SCHEME}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"{{API_BASE}}",
+						"{{USER_PATH}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get User's Assets",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{SCHEME}}://{{HOST}}:{{PORT}}/{{API_BASE}}/{{USER_PATH}}/:id/assets?sortBy=host&direction=desc&size=3&page=5",
+					"protocol": "{{SCHEME}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"{{API_BASE}}",
+						"{{USER_PATH}}",
+						":id",
+						"assets"
+					],
+					"query": [
+						{
+							"key": "sortBy",
+							"value": "host"
+						},
+						{
+							"key": "direction",
+							"value": "desc"
+						},
+						{
+							"key": "size",
+							"value": "3"
+						},
+						{
+							"key": "page",
+							"value": "5"
+						}
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "eba6c0e6-aa25-49ff-b727-f352ea4056aa"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add Asset to User",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"host\":\"{{$randomDomainName}}\",\r\n    \"port\":22\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{SCHEME}}://{{HOST}}:{{PORT}}/{{API_BASE}}/{{USER_PATH}}/:id/assets",
+					"protocol": "{{SCHEME}}",
+					"host": [
+						"{{HOST}}"
+					],
+					"port": "{{PORT}}",
+					"path": [
+						"{{API_BASE}}",
+						"{{USER_PATH}}",
+						":id",
+						"assets"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "eba6c0e6-aa25-49ff-b727-f352ea4056aa"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
