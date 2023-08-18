@@ -61,7 +61,7 @@ public class UserService
     public void deleteById(String id)
     {
         if(userRepository.findById(id).isEmpty())
-            throw new UserNotFoundException("Invaid id");
+            throw new UserNotFoundException("Invalid id");
 
         userRepository.deleteById(id);
     }
@@ -70,7 +70,7 @@ public class UserService
     public void deleteByUsername(String username)
     {
         if(userRepository.findByUsername(username).isEmpty())
-            throw new UserNotFoundException("Invaid username");
+            throw new UserNotFoundException("Invalid username");
 
         userRepository.deleteByUsername(username);
     }
@@ -79,7 +79,7 @@ public class UserService
     public void deleteByEmail(String email)
     {
         if(userRepository.findByEmail(email).isEmpty())
-            throw new UserNotFoundException("Invaid email");
+            throw new UserNotFoundException("Invalid email");
 
         userRepository.deleteByEmail(email);
     }
